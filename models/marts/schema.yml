@@ -1,0 +1,27 @@
+version: 2
+models:
+  - name: mart_achievement_rarity
+    columns:
+      - name: key
+        tests: [not_null, unique]
+      - name: rarity_pct
+        tests:
+          - dbt_utils.accepted_range: { min_value: 0, max_value: 100 }
+  - name: mart_leaderboard
+    columns:
+      - name: user_id
+        tests: [not_null, unique]
+      - name: rank
+        tests: [not_null, unique]
+  - name: mart_game_popularity
+    columns:
+      - name: game_id
+        tests: [not_null, unique]
+  - name: mart_venue_popularity
+    columns:
+      - name: venue_name
+        tests: [not_null, unique]
+  - name: mart_player_stats
+    columns:
+      - name: user_id
+        tests: [not_null, unique]

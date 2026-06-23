@@ -1,0 +1,15 @@
+name: meepmap
+version: '1.0.0'
+profile: meepmap
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+on-run-end:
+  - "{{ grant_marts() }}"
+models:
+  meepmap:
+    +schema: analytics
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

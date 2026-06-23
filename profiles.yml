@@ -1,0 +1,23 @@
+meepmap:
+  target: prod
+  outputs:
+    prod:
+      type: postgres
+      host: "{{ env_var('DBT_PROD_HOST') }}"
+      port: 5432
+      user: "{{ env_var('DBT_PROD_USER') }}"
+      password: "{{ env_var('DBT_PROD_PASSWORD') }}"
+      dbname: postgres
+      schema: analytics
+      sslmode: require
+      threads: 4
+    test:
+      type: postgres
+      host: "{{ env_var('DBT_TEST_HOST') }}"
+      port: 5432
+      user: "{{ env_var('DBT_TEST_USER') }}"
+      password: "{{ env_var('DBT_TEST_PASSWORD') }}"
+      dbname: postgres
+      schema: analytics
+      sslmode: require
+      threads: 4

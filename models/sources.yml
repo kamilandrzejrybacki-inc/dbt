@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: app
+    schema: public
+    tables:
+      - name: profiles
+      - name: sessions
+      - name: participations
+      - name: user_achievements
+      - name: achievement_definitions
+      - name: games
