@@ -1,9 +1,13 @@
-# meepmap-dbt
+# dbt — homelab monorepo
 
-dbt project building MeepMap business-metric marts into the Supabase `analytics` schema.
-Run daily by the `meepmap-dbt` k8s CronJob (helm). Targets: `prod` + `test` (both eu-west-1 pooler).
+General dbt project repository. Each business domain is a subdirectory holding its own dbt project
+(`dbt_project.yml`, `models/`, `profiles.yml`, `requirements.txt`).
 
-Marts: `mart_achievement_rarity`, `mart_leaderboard`, `mart_game_popularity`,
-`mart_venue_popularity`, `mart_player_stats`. App reads via `supabase.schema('analytics')`.
+## Projects
+- **`meepmap/`** — MeepMap business-metric marts → Supabase `analytics` schema (prod + test targets).
 
-`dbt build --target prod` (or `test`). Connection from env: `DBT_<ENV>_HOST/USER/PASSWORD`.
+## Running
+Per-project: `cd <project> && dbt deps && dbt build --target <prod|test>`.
+Connections come from env (`DBT_<ENV>_HOST/USER/PASSWORD`); see each project's `profiles.yml`.
+Built daily by the `dbt-job` k8s CronJob (one app per project, `projectDir` = the subdir), and editable
+in the shared dbt-ui at dbt.kamilandrzejrybacki.dpdns.org.
