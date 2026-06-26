@@ -9,3 +9,7 @@ sources:
       - name: user_achievements
       - name: achievement_definitions
       - name: games
+  - name: catalog
+    schema: catalog
+    tables:
+      - name: bgg_games
