@@ -25,3 +25,10 @@ models:
     columns:
       - name: user_id
         tests: [not_null, unique]
+  - name: mart_digest_trending
+    description: Current-week BGG trending games for the weekly digest email.
+    columns:
+      - name: bgg_id
+        tests: [not_null, unique]
+      - name: hot_rank
+        tests: [not_null]
